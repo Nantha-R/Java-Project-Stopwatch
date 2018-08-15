@@ -71,6 +71,10 @@ public class Contents {
         startButton.setOnAction(e->{
             actions.startStopwatch();
         });
+
+        stopButton.setOnAction(e->{
+            actions.stopStopwatch();
+        });
     }
     public void initializeScene()
     {

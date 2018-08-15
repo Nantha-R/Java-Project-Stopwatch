@@ -1,8 +1,9 @@
 
-public class Actions extends Thread {
+public class Actions{
 
-    public Contents contents;
-    public boolean runFlag;
+    private Contents contents;
+    private volatile boolean runFlag;
+    private StopWatch stopWatch;
 
     Actions(){}
 
@@ -24,25 +25,25 @@ public class Actions extends Thread {
         if(! isRunFlag())
         {
             setRunFlag(true);
-            this.start();
+            stopWatch = new StopWatch(this);
+            stopWatch.start();
         }
     }
 
-    public void run()
+    public void stopStopwatch()
     {
-
-        while(isRunFlag())
+        if(isRunFlag())
         {
             try
             {
-                Thread.sleep(998);
+                setRunFlag(false);
+                stopWatch.join();
             }
             catch (Exception e)
             {
                 e.printStackTrace();
                 System.exit(1);
             }
-            incrementTime();
         }
     }
 
