@@ -7,6 +7,7 @@ public class Main extends Application {
     {
         Contents contents = new Contents(window);
         contents.initializeItems();
+        contents.initializeEvents();
         contents.initializeScene();
         contents.initializeWindow();
     }

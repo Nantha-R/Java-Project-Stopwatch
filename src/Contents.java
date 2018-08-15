@@ -11,12 +11,36 @@ public class Contents {
     private TextField hoursField, minutesField, secondsField;
     private Button startButton,stopButton,resetButton;
     private Scene scene;
-
+    public Actions actions;
     Contents(){}
 
     Contents(Stage window)
     {
         this.window = window;
+    }
+
+    public int getSeconds() {
+        return Integer.parseInt(secondsField.getText());
+    }
+
+    public void setSeconds(int seconds) {
+        this.secondsField.setText(String.valueOf(seconds));
+    }
+
+    public int getMinutes() {
+        return Integer.parseInt(minutesField.getText());
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutesField.setText(String.valueOf(minutes));
+    }
+
+    public int getHours() {
+        return Integer.parseInt(hoursField.getText());
+    }
+
+    public void setHours(int hours) {
+        this.hoursField.setText(String.valueOf(hours));
     }
 
     public void initializeItems()
@@ -40,6 +64,14 @@ public class Contents {
         resetButton = new Button("RESET");
     }
 
+    public void initializeEvents()
+    {
+        actions = new Actions(this);
+
+        startButton.setOnAction(e->{
+            actions.startStopwatch();
+        });
+    }
     public void initializeScene()
     {
         GridPane.setConstraints(hours,0,1);
