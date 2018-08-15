@@ -47,6 +47,14 @@ public class Actions{
         }
     }
 
+    public void resetStopwatch()
+    {
+        stopStopwatch();
+        contents.setSeconds(0);
+        contents.setMinutes(0);
+        contents.setHours(0);
+    }
+
     public void incrementTime()
     {
         int seconds = contents.getSeconds() + 1;
